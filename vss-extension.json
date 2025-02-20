@@ -1,9 +1,9 @@
 {
   "manifestVersion": 1,
-  "id": "snyk-security-scan",
-  "name": "Snyk Security Scan",
-  "version": "0.0.0",
-  "publisher": "Snyk",
+  "id": "Secstor-security-scan",
+  "name": "UKHO Snyk Security Scan",
+  "version": "0.3.2",
+  "publisher": "Secstor",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"

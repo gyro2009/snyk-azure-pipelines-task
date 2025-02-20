@@ -1,14 +1,14 @@
 {
-  "id": "826d5fe9-3983-4643-b918-487964d7cc87",
-  "name": "SnykSecurityScan",
-  "friendlyName": "Snyk Security Scan",
-  "description": "Azure Pipelines Task for Snyk",
+  "id": "a477d752-b613-4a2c-8056-38a777392aa5",
+  "name": "UKHOSnykSecurityScan",
+  "friendlyName": "UKHO Snyk Security Scan",
+  "description": "UKHO Azure Pipelines Task for Snyk",
   "helpMarkDown": "",
   "category": "Utility",
-  "author": "Snyk",
+  "author": "Secstor",
   "version": {
     "Major": 0,
-    "Minor": 2,
+    "Minor": 3,
     "Patch": 2
   },
   "instanceNameFormat": "Snyk scan for open source vulnerabilities",
@@ -43,7 +43,8 @@
       "options": {
         "app": "Application",
         "code": "Code",
-        "container": "Container Image"
+        "container": "Container Image",
+        "iac": "Infrastructure as code"
       },
       "properties": {
         "EditableOptions": "False"

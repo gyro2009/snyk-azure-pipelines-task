@@ -55,8 +55,8 @@ class TaskArgs {
   public setMonitorWhen(rawInput?: string) {
     if (rawInput) {
       const lowerCaseInput = rawInput.toLowerCase();
-      if (this.testType == TestType.CODE) {
-        console.log('Snyk Code publishes results using --report workflow');
+      if (this.testType == TestType.CODE || this.testType == TestType.IAC) {
+        console.log('This test type publishes results using --report workflow');
         this.monitorWhen = 'never';
       } else if (lowerCaseInput === 'never' || lowerCaseInput === 'always') {
         this.monitorWhen = lowerCaseInput;
@@ -72,7 +72,7 @@ class TaskArgs {
 
   // disallow snyk code monitor which follows --report workflow
   public shouldRunMonitor(snykTestSuccess: boolean): boolean {
-    if (this.testType == TestType.CODE) {
+    if (this.testType == TestType.CODE || this.testType == TestType.IAC) {
       return false;
     } else if (this.monitorWhen === 'always') {
       return true;

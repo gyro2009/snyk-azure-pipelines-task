@@ -195,6 +195,7 @@ async function runSnykTest(
 
   const snykTestToolRunner = tl
     .tool(snykPath)
+    .argIf(taskArgs.testType === TestType.IAC, 'iac')
     .argIf(taskArgs.testType === TestType.CODE, 'code')
     .argIf(
       taskArgs.dockerImageName ||

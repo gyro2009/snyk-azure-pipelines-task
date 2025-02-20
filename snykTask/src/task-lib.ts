@@ -114,6 +114,7 @@ export enum TestType {
   APPLICATION = 'app',
   CODE = 'code',
   CONTAINER_IMAGE = 'container',
+  IAC = 'iac',
 }
 
 export const testTypeSeverityThreshold = new Map<string, Array<string>>([
@@ -124,6 +125,10 @@ export const testTypeSeverityThreshold = new Map<string, Array<string>>([
   [TestType.CODE, [Severity.HIGH, Severity.MEDIUM, Severity.LOW]],
   [
     TestType.CONTAINER_IMAGE,
+    [Severity.CRITICAL, Severity.HIGH, Severity.MEDIUM, Severity.LOW],
+  ],
+  [
+    TestType.IAC,
     [Severity.CRITICAL, Severity.HIGH, Severity.MEDIUM, Severity.LOW],
   ],
 ]);
