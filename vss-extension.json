@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "Secstor-security-scan",
   "name": "UKHO Snyk Security Scan",
-  "version": "0.3.2",
+  "version": "0.5.1",
   "publisher": "Secstor",
   "targets": [
     {

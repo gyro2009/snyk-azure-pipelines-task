@@ -8,8 +8,8 @@
   "author": "Secstor",
   "version": {
     "Major": 0,
-    "Minor": 3,
-    "Patch": 2
+    "Minor": 5,
+    "Patch": 1
   },
   "instanceNameFormat": "Snyk scan for open source vulnerabilities",
   "groups": [

@@ -512,6 +512,7 @@ async function run() {
       taskArgs.failOnIssues
     ) {
       const failureThreshold: string = taskArgs.failOnThreshold;
+      console.log(`Checking for vulns on threshold ${failureThreshold}`)
       const matchingVulnerabilitiesFound =
         doVulnerabilitiesExistForFailureThreshold(
           jsonReportFullPath,

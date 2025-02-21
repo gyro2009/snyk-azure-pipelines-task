@@ -46,6 +46,7 @@ export function generateReportTitle(
   }
 
   // Single project scan or Snyk code scan results
+  console.log(jsonResults);
   let titleText = '';
   if (jsonResults['docker'] && jsonResults['docker']['baseImage']) {
     titleText = `Snyk Test for ${
@@ -63,6 +64,10 @@ export function generateReportTitle(
     titleText = `Snyk Code Test for (${formatReportName(attachmentName)})`;
   }
 
+  if (jsonResults['infrastructureAsCodeIssues']) {
+    titleText = `Snyk IAC test for (${formatReportName(attachmentName)})`;
+  }
+
   if (jsonResults['uniqueCount'] && jsonResults['uniqueCount'] > 0) {
     titleText += ` | Found ${jsonResults['uniqueCount']} issues`;
   } else if (
@@ -70,6 +75,8 @@ export function generateReportTitle(
     jsonResults['runs'][0]['results'].length > 0
   ) {
     titleText += ` | Found ${jsonResults['runs'][0]['results'].length} issues`;
+  } else if (jsonResults['infrastructureAsCodeIssues'] && jsonResults['infrastructureAsCodeIssues'].length > 0) {
+    titleText += ` | Found ${jsonResults['infrastructureAsCodeIssues'].length} issues`;
   } else {
     titleText += ` | No issues found`;
   }

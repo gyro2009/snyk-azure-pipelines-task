@@ -172,7 +172,14 @@ export function doVulnerabilitiesExistForFailureThreshold(
 
   if (isSnykCodeOutput(json)) {
     return hasMatchingCodeIssues(json['runs'][0]['results'], thresholdOrdinal);
-  } else if (Array.isArray(json)) {
+  } else if (isSnykIACOutput(json)) {
+    const iacIssues = json['infrastructureAsCodeIssues'];
+    for (let i = 0; i < iacIssues.length; i++) {
+      if (getSeverityOrdinal(iacIssues[i]['severity']) >= thresholdOrdinal) {
+        return true;
+      }
+    }
+  }else if (Array.isArray(json)) {
     for (let i = 0; i < json.length; i++) {
       if (hasMatchingVulnerabilities(json[i], thresholdOrdinal)) {
         return true;
@@ -214,4 +221,9 @@ function hasMatchingCodeIssues(results: any, thresholdOrdinal: number) {
 // tests whether json content is a Snyk code cli output json
 function isSnykCodeOutput(jsonContent: any) {
   return jsonContent['$schema'];
+}
+
+// tests whether json content is a Snyk IAC cli output json
+function isSnykIACOutput(jsonContent: any) {
+  return jsonContent['infrastructureAsCodeIssues'];
 }

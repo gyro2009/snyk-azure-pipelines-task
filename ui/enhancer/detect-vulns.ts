@@ -21,8 +21,9 @@ export function detectVulns(jsonResults: object | any[]): boolean {
 
   if (
     (jsonResults['uniqueCount'] && jsonResults['uniqueCount'] > 0) ||
-    (jsonResults['$schema'] && jsonResults['runs'][0]['results'].length > 0)
-  ) {
+    (jsonResults['$schema'] && jsonResults['runs'][0]['results'].length > 0) ||
+    (jsonResults['infrastructureAsCodeIssues'] && jsonResults['infrastructureAsCodeIssues'].length > 0)
+  ){
     return true;
   }
 
