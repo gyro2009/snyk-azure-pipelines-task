@@ -17,7 +17,7 @@
 import { TaskArgs } from './task-args';
 import * as tr from 'azure-pipelines-task-lib/toolrunner';
 import * as tl from 'azure-pipelines-task-lib/task';
-import stream = require('stream');
+import { Writable } from 'stream';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -56,9 +56,7 @@ export const getOptionsForSnykToHtml = (
   htmlOutputFileFullPath: string,
   taskArgs: TaskArgs,
 ): tr.IExecOptions => {
-  const writableString: stream.Writable = fs.createWriteStream(
-    htmlOutputFileFullPath,
-  );
+  const writableString: Writable = fs.createWriteStream(htmlOutputFileFullPath);
 
   return {
     cwd: taskArgs.testDirectory,
@@ -95,7 +93,7 @@ export function removeRegexFromFile(
       });
       const result = data.replace(regex, '');
       fs.writeFileSync(fileFullPath, result);
-    } catch (err) {
+    } catch {
       if (debug) {
         console.log(`Removing ${regex} from ${fileFullPath} failed.`);
       }
@@ -179,7 +177,7 @@ export function doVulnerabilitiesExistForFailureThreshold(
         return true;
       }
     }
-  }else if (Array.isArray(json)) {
+  } else if (Array.isArray(json)) {
     for (let i = 0; i < json.length; i++) {
       if (hasMatchingVulnerabilities(json[i], thresholdOrdinal)) {
         return true;

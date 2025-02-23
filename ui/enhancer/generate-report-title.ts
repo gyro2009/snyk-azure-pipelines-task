@@ -75,7 +75,10 @@ export function generateReportTitle(
     jsonResults['runs'][0]['results'].length > 0
   ) {
     titleText += ` | Found ${jsonResults['runs'][0]['results'].length} issues`;
-  } else if (jsonResults['infrastructureAsCodeIssues'] && jsonResults['infrastructureAsCodeIssues'].length > 0) {
+  } else if (
+    jsonResults['infrastructureAsCodeIssues'] &&
+    jsonResults['infrastructureAsCodeIssues'].length > 0
+  ) {
     titleText += ` | Found ${jsonResults['infrastructureAsCodeIssues'].length} issues`;
   } else {
     titleText += ` | No issues found`;

@@ -25,8 +25,6 @@ import { getSnykDownloadInfo, downloadExecutable } from '../install';
 
 jest.setTimeout(120_000);
 
-import stream = require('stream');
-
 import {
   getOptionsToExecuteSnykCLICommand,
   getOptionsToExecuteCmd,
@@ -38,6 +36,7 @@ import {
 } from '../task-lib';
 import { TaskArgs } from '../task-args';
 import { execSync } from 'child_process';
+import { Writable } from 'stream';
 
 let tempFolder = '';
 let snykCliPath = '';
@@ -243,7 +242,7 @@ describe('getOptionsForSnykToHtml', () => {
     expect(options.cwd).toBe('/some/path');
     expect(options.failOnStdErr).toBe(false);
     expect(options.ignoreReturnCode).toBe(true);
-    expect(options.outStream).toBeInstanceOf(stream.Writable);
+    expect(options.outStream).toBeInstanceOf(Writable);
   });
 });
 

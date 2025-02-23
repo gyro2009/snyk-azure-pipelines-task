@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import * as taskVersionModule from '../task-version';
 
 test('ensure we can read the version from the task.json file', () => {
   const mockFn = jest.fn().mockReturnValue(`{
@@ -37,7 +38,6 @@ test('ensure we can read the version from the task.json file', () => {
     };
   });
 
-  const taskVersionModule = require('../task-version');
   const v: string = taskVersionModule.getTaskVersion('./snykTask/task.json');
   expect(v).toBe('1.2.3');
   expect(mockFn).toHaveBeenCalledTimes(1);

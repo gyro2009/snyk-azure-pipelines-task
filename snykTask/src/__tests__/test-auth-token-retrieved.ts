@@ -15,6 +15,7 @@
  */
 
 import { EndpointAuthorization } from 'azure-pipelines-task-lib';
+import * as att from '../task-args';
 
 beforeEach(() => {
   jest.resetModules();
@@ -44,7 +45,6 @@ test('test auth token pulled from service connection', () => {
     };
   });
 
-  const att = require('../task-args');
   const retrievedAuthToken = att.getAuthToken();
   expect(retrievedAuthToken).toBe('some-token');
 });
@@ -77,7 +77,6 @@ test('test auth token pulled from serviceConnectionEndpoint if both authToken an
     };
   });
 
-  const att = require('../task-args');
   const retrievedAuthToken = att.getAuthToken();
   expect(retrievedAuthToken).toBe('some-token-from-service-connection');
   expect(mockFnGetEndpointAuthorization).toHaveBeenCalledTimes(1);
@@ -111,7 +110,6 @@ test('test auth token pulled from authToken if both authToken set and serviceCon
     };
   });
 
-  const att = require('../task-args');
   const retrievedAuthToken = att.getAuthToken();
   expect(retrievedAuthToken).toBe('some-test-auth-token');
   expect(mockFnGetEndpointAuthorization).toHaveBeenCalledTimes(0);
@@ -145,7 +143,6 @@ test('test auth token returns empty string if both authToken set and serviceConn
     };
   });
 
-  const att = require('../task-args');
   const retrievedAuthToken = att.getAuthToken();
   expect(retrievedAuthToken).toBe('');
   expect(mockFnGetEndpointAuthorization).toHaveBeenCalledTimes(0);
