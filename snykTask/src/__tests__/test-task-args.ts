@@ -290,6 +290,18 @@ describe('TaskArgs.validate', () => {
     );
   });
 
+  it('throws error if invalid failOnThreshold for IAC testType', () => {
+    expect(() => {
+      args.failOnThreshold = 'thisIsInvalidFailOnThreshold';
+      args.testType = TestType.IAC;
+      args.validate();
+    }).toThrow(
+      new Error(
+        "If set, failOnThreshold must be one from [critical,high,medium,low] (case insensitive). If not set, the default is 'low'.",
+      ),
+    );
+  });
+
   it('throws error if invalid testType specified with invalid failOnThreshold', () => {
     expect(() => {
       args.failOnThreshold = 'thisIsInvalidFailOnThreshold';

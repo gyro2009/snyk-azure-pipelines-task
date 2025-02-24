@@ -50,6 +50,7 @@ export default [
       '@typescript-eslint/no-inferrable-types': 'off',
       'no-prototype-builtins': 0,
       'require-atomic-updates': 0,
+      '@typescript-eslint/no-require-imports': 0,
     },
   },
 ];
